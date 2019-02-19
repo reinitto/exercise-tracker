@@ -1,10 +1,10 @@
 {
-  "name": "Exeercise-tracker",
+  "name": "exercise-tracker",
   "version": "0.1.0",
   "description": "A REST API project, part of Free Code Camp's curriculum",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
