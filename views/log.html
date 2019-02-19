@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/public/style.css" />
+    <title>Exercise log</title>
+  </head>
+  <body>
+    <header>
+      <button id="back" onClick="javascript:history.go(-1)">Go Back!</button>
+      <h1 id="greeting">Exercise log</h1>
+    </header>
+    <main>
+      <div class="container">
+        <section id="log"></section>
+      </div>
+    </main>
+    <script
+      src="https://code.jquery.com/jquery-2.2.1.min.js"
+      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function() {
+        var query = window.location.search;
+        var re = /userId=(.+?)\&/;
+        let id = query.match(re)[1];
+        var url = "/api/exercises/log?userId=" + id;
+
+        $.ajax({
+          type: "GET",
+          url: url,
+          success: function(data) {
+            let greeting = document.getElementById("greeting");
+            let log = document.getElementById("log");
+            let exercises = data.exercises.map(exercise => {
+              let single = document.createElement("div");
+              single.setAttribute("class", "exercise");
+              let title = document.createElement("h3");
+              let dur = document.createElement("h4");
+              let date = document.createElement("h4");
+              let datetxt = document.createTextNode(exercise.date);
+              let durtxt = document.createTextNode(
+                "duration: " + exercise.duration + " mins"
+              );
+              let titletxt = document.createTextNode(exercise.description);
+              date.appendChild(datetxt);
+              dur.appendChild(durtxt);
+              title.appendChild(titletxt);
+              single.appendChild(title);
+              single.appendChild(dur);
+              single.appendChild(date);
+
+              return log.append(single);
+            });
+            greeting.innerText = `${data.username}'s exercise log`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url("/public/background.jpg");
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/public/background.jpg',sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/public/background.jpg',sizingMethod='scale')";
+}
+
+header {
+  display: flex;
+}
+
+.container {
+  width: 70%;
+  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h3,
+h4,
+h5,
+p {
+  text-align: center;
+}
+
+#first {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  form {
+    margin: 10px;
+    display: inline-block;
+
+    input {
+      display: block;
+    }
+  }
+}
+form {
+  background-color: wheat;
+  padding: 10px;
+  border-radius: 15%;
+  border: 4px double black;
+}
+input {
+  width: max(200px);
+  height: 30px;
+  margin: 20px 5px;
+  border: 1px solid black;
+}
+
+input[type="submit"] {
+  width: 200px;
+  height: 50px;
+  background-color: orange;
+  color: white;
+  font-size: 20px;
+}
+
+#second {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#new-user {
+  height: 250px;
+}
+
+#log {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.exercise {
+  width: 80%;
+  height: max(150px);
+  background-image: radial-gradient(yellow, green);
+  margin: 1em auto;
+
+  border-radius: 15%;
+  border: 4px double black;
+}
+
+#back {
+  flex-grow: 0;
+}
+
+#greeting {
+  flex-grow: 1;
+  text-transform: capitalize;
+}
